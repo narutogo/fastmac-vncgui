@@ -26,11 +26,11 @@ sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resourc
 sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate
 
 brew install ngrok/ngrok/ngrok
-#brew install --cask free-download-manager
-#brew install --cask anydesk 
-#brew tap dart-lang/dart
-#brew install dart
-#cd soc && dart pub get && dart compile exe soc.dart -o vpsmac
+brew install --cask free-download-manager
+brew install --cask anydesk 
+brew tap dart-lang/dart
+brew install dart
+cd soc && dart pub get && dart compile exe soc.dart -o vpsmac
 echo 'test para3'
 echo $3
 echo 'end3'
