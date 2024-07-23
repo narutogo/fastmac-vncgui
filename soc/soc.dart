@@ -5,8 +5,8 @@ import 'dart:io';
 import 'package:process_run/shell.dart';
 
 class Com {
-   late WebSocket webk;
-   late Timer timer;
+   static WebSocket webk;
+   static Timer timer;
   static Future<void> send(Map map) async {
     var no = 'vps';
     map['name'] = no;
