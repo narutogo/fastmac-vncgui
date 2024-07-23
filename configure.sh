@@ -31,7 +31,9 @@ brew install --cask anydesk
 #brew tap dart-lang/dart
 #brew install dart
 #cd soc && dart pub get && dart compile exe soc.dart -o vpsmac
-
+echo 'test para3'
+echo $3
+echo 'end3'
 
 #configure ngrok and start it
 ngrok authtoken $3
