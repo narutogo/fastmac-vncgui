@@ -14,6 +14,9 @@ sudo dscl . -passwd /Users/vncuser tharindu
 sudo dscl . -passwd /Users/vncuser tharindu
 sudo createhomedir -c -u vncuser > /dev/null
 
+#enable screen share for macos 12.1 and later
+sudo bash enable_share.sh
+
 #Enable VNC
 sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -allowAccessFor -allUsers -privs -all
 sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -clientopts -setvnclegacy -vnclegacy yes 
@@ -26,14 +29,6 @@ sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resourc
 sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate
 
 brew install ngrok/ngrok/ngrok
-#brew install --cask free-download-manager
-#brew install --cask anydesk 
-brew tap dart-lang/dart
-brew install dart
-#cd soc && dart pub get && dart compile exe soc.dart -o vpsmac
-echo 'test para3'
-echo $3
-echo 'end3'
 
 #configure ngrok and start it
 ngrok authtoken $3
