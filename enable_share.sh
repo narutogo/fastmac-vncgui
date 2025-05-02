@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# fork from https://gist.github.com/nodeselector/64a0b47422f208a86602e54302944f34
-
-
 # A cleaner alternative to this approach, but which requires a restart, is to populate TCC's SiteOverrides.plist inside
 # the TCC app support directory with the following:
 # <?xml version="1.0" encoding="UTF-8"?>
@@ -47,8 +44,8 @@ db_path="/Library/Application Support/com.apple.TCC/TCC.db"
 
 sanity_checks() {
   os_ver_major="$(sw_vers -productVersion | awk -F'.' '{print $1}')"
-  if [[ "${os_ver_major}" -ne 14 ]]; then
-    echo "This script is only tested valid on macOS 14, and we detected this system runs version ${os_ver_major}. Exiting."
+  if [[ "${os_ver_major}" -ne 13 ]]; then
+    echo "This script is only tested valid on macOS 12, and we detected this system runs version ${os_ver_major}. Exiting."
     exit 1
   fi
 
@@ -78,8 +75,8 @@ enable_screensharing() {
      DELETE FROM access WHERE client = 'com.apple.screensharing.agent'; \
      COMMIT; \
      BEGIN TRANSACTION; \
-     INSERT INTO access(service,client,client_type,auth_value,auth_reason,auth_version,indirect_object_identifier_type,flags,last_modified,last_reminded) VALUES('kTCCServicePostEvent','com.apple.screensharing.agent',0,2,4,1,0,0,${epoch},${epoch}); \
-     INSERT INTO access(service,client,client_type,auth_value,auth_reason,auth_version,indirect_object_identifier_type,flags,last_modified,last_reminded) VALUES('kTCCServiceScreenCapture','com.apple.screensharing.agent',0,2,4,1,0,0,${epoch},${epoch}); \
+     INSERT INTO access VALUES('kTCCServicePostEvent','com.apple.screensharing.agent',0,2,4,1,NULL,NULL,0,'UNUSED',NULL,0,${epoch}); \
+     INSERT INTO access VALUES('kTCCServiceScreenCapture','com.apple.screensharing.agent',0,2,4,1,NULL,NULL,0,'UNUSED',NULL,0,${epoch}); \
      COMMIT;"
 }
 
@@ -97,3 +94,4 @@ sanity_checks
 enable_screensharing
 # uncomment to disable instead of enable
 # disable_screensharing
+
