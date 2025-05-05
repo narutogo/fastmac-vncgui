@@ -47,10 +47,10 @@ db_path="/Library/Application Support/com.apple.TCC/TCC.db"
 
 sanity_checks() {
   os_ver_major="$(sw_vers -productVersion | awk -F'.' '{print $1}')"
-  if [[ "${os_ver_major}" -ne 14 ]]; then
-    echo "This script is only tested valid on macOS 14, and we detected this system runs version ${os_ver_major}. Exiting."
-    exit 1
-  fi
+#  if [[ "${os_ver_major}" -ne 14 ]]; then
+#    echo "This script is only tested valid on macOS 14, and we detected this system runs version ${os_ver_major}. Exiting."
+#    exit 1
+#  fi
 
   if [[ "$(id -u)" -ne 0 ]]; then
     echo "Need to run this script as root... exiting"
